@@ -36,7 +36,6 @@ namespace CodeRabbitDemo.Controllers
             {
                 Name="test",
             } };
-            list.Add(null);
 
             foreach (var item in list)
             {
