@@ -22,11 +22,37 @@ namespace CodeRabbitDemo.Controllers
         {
             return View();
         }
+        public IActionResult NonError()
+        {
+            return View(new List<DemoObject> { new DemoObject
+            {
+                Name="test",
+            } ,new DemoObject{
+              Name="hello",} });
+        }
+        public IActionResult ErrorList()
+        {
+            var list = new List<DemoObject> { new DemoObject
+            {
+                Name="test",
+            } };
+
+            foreach (var item in list)
+            {
+                Console.WriteLine(item.Name);
+            }
+            return View(list);
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        } 
+    }
+
+    class DemoObject
+    {
+        public string Name { get; set; }
     }
 }
